@@ -1,4 +1,4 @@
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 
 local config = import("micro/config")
 
@@ -19,6 +19,10 @@ function onSave(bp)
         reformat(bp, cmd)
     elseif bp.Buf:FileType() == "go" then
         cmd = "go fmt " .. bp.Buf.Path
+        reformat(bp, cmd)
+    elseif bp.Buf:FileType() == "c" then
+        cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
+        -- cmd = "clang-format --style=Webkit -i " .. bp.Buf.Path
         reformat(bp, cmd)
     end
 end
