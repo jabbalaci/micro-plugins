@@ -8,11 +8,11 @@ It was inspired by https://github.com/a11ce/micro-autofmt
 
 Currently supported languages and their associated formatters:
 
-* **Python** (`black`)
+* **Python** (`black` + `isort`)
 * **Lua** (`stylua`)
 * **Go** (`go fmt`)
 
-Under Manjaro, install these packages with your package manager: `python-black`, `stylua`
+Under Manjaro, install these packages with your package manager: `python-black`, `python-isort`, `stylua`
 
 ## Usage
 

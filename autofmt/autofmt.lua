@@ -1,4 +1,4 @@
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 local config = import("micro/config")
 
@@ -11,6 +11,8 @@ function onSave(bp)
 
     if bp.Buf:FileType() == "python" then
         cmd = "black --line-length 100 " .. bp.Buf.Path
+        reformat(bp, cmd)
+        cmd = "isort  " .. bp.Buf.Path
         reformat(bp, cmd)
     elseif bp.Buf:FileType() == "lua" then
         cmd = "stylua --indent-type Spaces --indent-width 4 " .. bp.Buf.Path
