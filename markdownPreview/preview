@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+    echo "Provide the name of a markdown (.md) file"
+    exit 1
+fi
+
+wgo -file=$1 clear :: glow $1

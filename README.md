@@ -11,3 +11,4 @@ At the moment, my plugins are not registered in the
 plugins channel, thus they are not installable
 from micro. If you need these plugins, you'll have to
 download and copy them to `~/.config/micro/plug` .
+

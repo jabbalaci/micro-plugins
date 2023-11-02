@@ -9,18 +9,19 @@ end
 function onSave(bp)
     local cmd = ""
 
-    if bp.Buf:FileType() == "python" then
+    local ft = bp.Buf:FileType()
+    if ft == "python" then
         cmd = "black --line-length 100 " .. bp.Buf.Path
         reformat(bp, cmd)
         cmd = "isort  " .. bp.Buf.Path
         reformat(bp, cmd)
-    elseif bp.Buf:FileType() == "lua" then
+    elseif ft == "lua" then
         cmd = "stylua --indent-type Spaces --indent-width 4 " .. bp.Buf.Path
         reformat(bp, cmd)
-    elseif bp.Buf:FileType() == "go" then
+    elseif ft == "go" then
         cmd = "go fmt " .. bp.Buf.Path
         reformat(bp, cmd)
-    elseif bp.Buf:FileType() == "c" then
+    elseif ft == "c" then
         cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
         -- cmd = "clang-format --style=Webkit -i " .. bp.Buf.Path
         reformat(bp, cmd)
