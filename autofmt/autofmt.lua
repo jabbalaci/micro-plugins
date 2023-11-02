@@ -1,4 +1,9 @@
-VERSION = "0.1.2"
+VERSION = "0.1.3"
+
+--[[
+    clang-format's preset coding styles:
+    LLVM, GNU, Google, Chromium, Microsoft, Mozilla, WebKit
+]]
 
 local config = import("micro/config")
 
@@ -23,7 +28,15 @@ function onSave(bp)
         reformat(bp, cmd)
     elseif ft == "c" then
         cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
-        -- cmd = "clang-format --style=Webkit -i " .. bp.Buf.Path
+        reformat(bp, cmd)
+    elseif ft == "csharp" then
+        cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
+        reformat(bp, cmd)
+    elseif ft == "java" then
+        cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
+        reformat(bp, cmd)
+    elseif ft == "json" then
+        cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
         reformat(bp, cmd)
     end
 end
