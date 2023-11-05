@@ -1,4 +1,4 @@
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 
 --[[
     clang-format's preset coding styles:
@@ -16,27 +16,27 @@ function onSave(bp)
 
     local ft = bp.Buf:FileType()
     if ft == "python" then
-        cmd = "black --line-length 100 " .. bp.Buf.Path
+        cmd = string.format("black --line-length 100 '%s'", bp.Buf.Path)
         reformat(bp, cmd)
-        cmd = "isort  " .. bp.Buf.Path
+        cmd = string.format("isort '%s'", bp.Buf.Path)
         reformat(bp, cmd)
     elseif ft == "lua" then
-        cmd = "stylua --indent-type Spaces --indent-width 4 " .. bp.Buf.Path
+        cmd = string.format("stylua --indent-type Spaces --indent-width 4 '%s'", bp.Buf.Path)
         reformat(bp, cmd)
     elseif ft == "go" then
-        cmd = "go fmt " .. bp.Buf.Path
+        cmd = string.format("go fmt '%s'", bp.Buf.Path)
         reformat(bp, cmd)
     elseif ft == "c" then
-        cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
+        cmd = string.format("clang-format --style=Microsoft -i '%s'", bp.Buf.Path)
         reformat(bp, cmd)
     elseif ft == "csharp" then
-        cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
+        cmd = string.format("clang-format --style=Microsoft -i '%s'", bp.Buf.Path)
         reformat(bp, cmd)
     elseif ft == "java" then
-        cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
+        cmd = string.format("clang-format --style=Microsoft -i '%s'", bp.Buf.Path)
         reformat(bp, cmd)
     elseif ft == "json" then
-        cmd = "clang-format --style=Microsoft -i " .. bp.Buf.Path
+        cmd = string.format("clang-format --style=Microsoft -i '%s'", bp.Buf.Path)
         reformat(bp, cmd)
     end
 end
