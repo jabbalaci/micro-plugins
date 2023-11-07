@@ -11,7 +11,7 @@ For instance, you want to edit several lines with
 a complicated macro. In that case, you switch quickly to vim,
 do the job, and then get back to micro.
 
-## Requirement
+## Requirements
 
 By default it calls `nvim`.
 
