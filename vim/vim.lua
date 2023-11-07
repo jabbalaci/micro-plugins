@@ -1,4 +1,4 @@
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 local config = import("micro/config")
 local shell = import("micro/shell")
@@ -21,8 +21,10 @@ function openWithVim(bp)
     local absPath = filepath.Abs(bp.Buf.Path)
     local c = bp.Buf:GetActiveCursor()
     local line = c.Loc.Y + 1 -- in vim, jump to the same line
+    local column = c.Loc.X + 1 -- in vim, jump to the same column
 
-    local cmd = string.format("%s +%d %s", VIM, line, absPath)
+    -- local cmd = string.format("%s +%d %s", VIM, line, absPath) -- same line
+    local cmd = string.format("%s '+call cursor(%d, %d)' %s", VIM, line, column, absPath) -- same line AND column
 
     bp:Save() -- save first
     shell.RunInteractiveShell(cmd, false, false) -- launch vim
