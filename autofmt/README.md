@@ -14,9 +14,9 @@ Currently supported languages and their associated formatters:
 * **Java** (`clang-format`)
 * **JSON** (`clang-format`)
 * **Lua** (`stylua`)
-* **Python** (`black` + `isort`)
+* **Python** (`ruff`)
 
-Under Manjaro, install these packages with your package manager: `clang`, `python-black`, `python-isort`, `stylua`
+Under Manjaro, install these packages with your package manager: `clang`, `ruff`, `stylua`
 
 ## Usage
 
