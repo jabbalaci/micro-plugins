@@ -33,6 +33,9 @@ function onSave(bp)
     elseif ft == "lua" then
         cmd = string.format("stylua --indent-type Spaces --indent-width 4 '%s'", bp.Buf.Path)
         reformat(bp, cmd)
+    elseif ft == "d" then
+        cmd = string.format("dfmt -i '%s'", bp.Buf.Path)
+        reformat(bp, cmd)
     elseif ft == "go" then
         cmd = string.format("go fmt '%s'", bp.Buf.Path)
         reformat(bp, cmd)
