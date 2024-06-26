@@ -13,6 +13,7 @@ Currently supported languages:
 
 * **C** (with `gcc`)
 * **C#** (with `dotnet run`)
+* **D** (with `rdmd`)
 * **Go** (with `go run`)
 * **Java** (with `javac` and `java`)
 * **Lua** (with `lua`)

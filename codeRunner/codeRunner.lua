@@ -25,6 +25,8 @@ function codeRunner(bp)
         jobArgs = { "dotnet", "run" }
     elseif buf:FileType() == "lua" then
         jobArgs = { "lua", bp.Buf.Path }
+    elseif buf:FileType() == "d" then
+        jobArgs = { "rdmd", bp.Buf.Path }
     elseif buf:FileType() == "shell" then
         jobArgs = { "bash", bp.Buf.Path }
     elseif buf:FileType() == "c" then
