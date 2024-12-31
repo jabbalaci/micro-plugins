@@ -1,4 +1,4 @@
-VERSION = "0.1.4"
+VERSION = "0.1.5"
 
 --[[
     clang-format's preset coding styles:
@@ -17,6 +17,13 @@ function reformat(bp, cmd)
     local result = handle:read("*a")
     handle:close()
     bp.Buf:ReOpen()
+end
+
+function execute(bp, cmd)
+    bp:Save()
+    local handle = io.popen(cmd)
+    local result = handle:read("*a")
+    handle:close()
 end
 
 function onSave(bp)
@@ -54,5 +61,13 @@ function onSave(bp)
     elseif ft == "gleam" then
         cmd = string.format("gleam format '%s'", bp.Buf.Path)
         reformat(bp, cmd)
+    elseif ft == "pascal" then
+        local ptop_cfg = "/home/jabba/Dropbox/pascal/config.cfg"
+        local temp_file = string.format("%s.hjg6343.tmp", bp.Buf.Path)
+        cmd = string.format("ptop -l 100 -c '%s' '%s' '%s'", ptop_cfg, bp.Buf.Path, temp_file)
+        execute(bp, cmd)
+        cmd = string.format("mv '%s' '%s'", temp_file, bp.Buf.Path)
+        execute(bp, cmd)
+        bp.Buf:ReOpen()
     end
 end

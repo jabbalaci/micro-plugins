@@ -14,9 +14,10 @@ Currently supported languages and their associated formatters:
 * **Java** (`clang-format`)
 * **JSON** (`clang-format`)
 * **Lua** (`stylua`)
+* **Pascal** (`ptop`)
 * **Python** (`ruff`)
 
-Under Manjaro, install these packages with your package manager: `clang`, `ruff`, `stylua`
+Under Manjaro, install these packages with your package manager: `clang`, `ruff`, `stylua`, `fpc`
 
 ## Usage
 
