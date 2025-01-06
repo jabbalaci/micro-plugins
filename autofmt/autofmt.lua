@@ -62,12 +62,24 @@ function onSave(bp)
         cmd = string.format("gleam format '%s'", bp.Buf.Path)
         reformat(bp, cmd)
     elseif ft == "pascal" then
-        local ptop_cfg = "/home/jabba/Dropbox/pascal/config.cfg"
         local temp_file = string.format("%s.hjg6343.tmp", bp.Buf.Path)
+        -- find these two (v) files below here: https://github.com/jabbalaci/FreePascalStuff
+        local ptop_cfg = "/home/jabba/Dropbox/pascal/FreePascalStuff/config.cfg"
+        local post_correction = "/home/jabba/Dropbox/pascal/FreePascalStuff/post_correction.py"
+        -- call ptop
         cmd = string.format("ptop -l 100 -c '%s' '%s' '%s'", ptop_cfg, bp.Buf.Path, temp_file)
         execute(bp, cmd)
+        -- rename temp file to current file
         cmd = string.format("mv '%s' '%s'", temp_file, bp.Buf.Path)
         execute(bp, cmd)
+        bp.Buf:ReOpen()
+        -- call post-correction script to fix some issues of ptop
+        cmd = string.format("%s '%s' '%s'", post_correction, bp.Buf.Path, temp_file)
+        execute(bp, cmd)
+        -- rename temp file to current file
+        cmd = string.format("mv '%s' '%s'", temp_file, bp.Buf.Path)
+        execute(bp, cmd)
+        -- reload current buffer
         bp.Buf:ReOpen()
     end
 end
