@@ -64,8 +64,8 @@ function onSave(bp)
     elseif ft == "pascal" then
         local temp_file = string.format("%s.hjg6343.tmp", bp.Buf.Path)
         -- find these two (v) files below here: https://github.com/jabbalaci/FreePascalStuff
-        local ptop_cfg = "/home/jabba/Dropbox/pascal/FreePascalStuff/config.cfg"
-        local post_correction = "/home/jabba/Dropbox/pascal/FreePascalStuff/post_correction.py"
+        local ptop_cfg = "/home/jabba/Dropbox/pascal/FreePascalStuff/ptop/config.cfg"
+        local post_correction = "/home/jabba/Dropbox/pascal/FreePascalStuff/ptop/post_correction.py"
         -- call ptop
         cmd = string.format("ptop -l 100 -c '%s' '%s' '%s'", ptop_cfg, bp.Buf.Path, temp_file)
         execute(bp, cmd)
