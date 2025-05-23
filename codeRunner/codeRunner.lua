@@ -29,6 +29,8 @@ function codeRunner(bp)
         jobArgs = { "rdmd", bp.Buf.Path }
     elseif buf:FileType() == "shell" then
         jobArgs = { "bash", bp.Buf.Path }
+    elseif buf:FileType() == "fish" then
+        jobArgs = { "fish", bp.Buf.Path }
     elseif buf:FileType() == "c" then
         out, err = shell.RunCommand("gcc " .. buf.Path)
         if err ~= nil then
